@@ -29,7 +29,7 @@ namespace Projekt_Abschluss.Views
             User user = new User
             {
                 Name = UserTextBox.Text,
-                Password = PasswordPasswordBox.Password,a
+                Password = PasswordPasswordBox.Password
             };
             
         }
