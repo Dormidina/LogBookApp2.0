@@ -1,4 +1,5 @@
 ﻿using Projekt_Abschluss.Models;
+using Projekt_Abschluss.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,10 @@ namespace Projekt_Abschluss.Views
                 Name = UserTextBox.Text,
                 Password = PasswordPasswordBox.Password
             };
+
+            UserRepository repository = new UserRepository();
+            repository.UserExists(user);
+            
             
         }
     }
