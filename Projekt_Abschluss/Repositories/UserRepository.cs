@@ -1,5 +1,6 @@
 ﻿using Projekt_Abschluss.Models;
 using System;
+using System.Configuration;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -18,12 +19,13 @@ namespace Projekt_Abschluss.Repositories
         {
             try
             {
-                SqlConnection connectionString = new SqlConnection(@"Data Source=(localdb)\LogBookApp;Initial Catalog=LogBookApp;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+                string stringConnection = ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString;
+                SqlConnection connection = new SqlConnection(stringConnection);
 
-                connectionString.Open();
+                connection.Open();
 
                 var query = @"SELECT COUNT(*) FROM Users WHERE Name = @Name AND Password = @Password";
-                var userCount = connectionString.ExecuteScalar<int>(query, new {user.Name, user.Password});
+                var userCount = connection.ExecuteScalar<int>(query, new {user.Name, user.Password});
                 return userCount > 0;
 
 

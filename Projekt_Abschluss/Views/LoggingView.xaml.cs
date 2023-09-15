@@ -34,7 +34,18 @@ namespace Projekt_Abschluss.Views
             };
 
             UserRepository repository = new UserRepository();
-            repository.UserExists(user);
+            
+            if (repository.UserExists(user))
+            {
+                // Anadir logica inicio sesion
+
+            }
+            else
+            {
+                MessageBox.Show("Logging Error");
+            }
+
+            
             
             
         }
