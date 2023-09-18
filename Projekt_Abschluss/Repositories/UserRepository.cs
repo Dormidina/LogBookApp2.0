@@ -27,7 +27,7 @@ namespace Projekt_Abschluss.Repositories
                 var query = @"SELECT COUNT(*) FROM Users WHERE Name = @Name AND Password = @Password";
                 var userCount = connection.ExecuteScalar<int>(query, new {user.Name, user.Password});
                 return userCount > 0;
-
+                // Comentario conflicto 2
 
             }
             catch
