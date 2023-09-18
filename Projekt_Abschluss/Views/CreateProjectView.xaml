@@ -20,12 +20,12 @@
         </Grid.RowDefinitions>
         <Label Content="CREATE NEW PROJECT" FontSize="30" HorizontalAlignment="Center" Grid.ColumnSpan="2"/>
         <Label Grid.Row="1" Content="Name" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="5,5,100,5"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Height="50" Width="300"/>
+        <TextBox x:Name="NameProject" Grid.Row="1" Grid.Column="1" Height="50" Width="300"/>
         <Label Grid.Row="2" Content="Description" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="5,5,100,5"/>
-        <TextBox Grid.Row="2" Grid.Column="1" Height="50" Width="300"/>
+        <TextBox x:Name="DescriptionProject"  Grid.Row="2" Grid.Column="1" Height="50" Width="300"/>
         <Label Grid.Row="3" Content="Company" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Margin="5,5,100,5"/>
-        <TextBox Grid.Row="3" Grid.Column="1" Height="50" Width="300"/>
-        <Button  Content="Confirm"  Grid.Column="0" Grid.Row="4" Height="50" Width="300"/>
+        <ComboBox x:Name="CompanyProject"  Grid.Row="3" Grid.Column="1" Height="50" Width="300"/>
+        <Button  x:Name="ConfirmButton"  Content="Confirm"  Grid.Column="0" Grid.Row="4" Height="50" Width="300" Click="ConfirmButton_Click"/>
         <Button Content="Cancel" Grid.Column="1" Grid.Row="4" Height="50" Width="300"/>
 
 

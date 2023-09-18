@@ -10,12 +10,13 @@ using System.Windows.Controls;
 using System.Windows;
 using Microsoft.Data.SqlClient;
 using Dapper;
+using System.Threading;
 
 namespace Projekt_Abschluss.Repositories
 {
     public class UserRepository
     {
-        public bool UserExists(User user)
+        public async Task<bool> UserExistsAsync(UserModel user)
         {
             try
             {
@@ -25,13 +26,13 @@ namespace Projekt_Abschluss.Repositories
                 connection.Open();
 
                 var query = @"SELECT COUNT(*) FROM Users WHERE Name = @Name AND Password = @Password";
-                var userCount = connection.ExecuteScalar<int>(query, new {user.Name, user.Password});
-                return userCount > 0;
-                //Comentario conflicto
+                var userCount = await connection.ExecuteScalarAsync<int>(query, new {user.Name, user.Password});
+                return userCount > 0;               
 
             }
             catch
             {
+
                 return false;
             }
         }

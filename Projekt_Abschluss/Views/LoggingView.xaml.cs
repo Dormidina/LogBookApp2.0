@@ -25,9 +25,9 @@ namespace Projekt_Abschluss.Views
             InitializeComponent();
         }
 
-        private void LoggingButton_Click(object sender, RoutedEventArgs e)
+        private async void LoggingButton_ClickAsync(object sender, RoutedEventArgs e)
         {
-            User user = new User
+            UserModel user = new UserModel
             {
                 Name = UserTextBox.Text,
                 Password = PasswordPasswordBox.Password
@@ -35,7 +35,7 @@ namespace Projekt_Abschluss.Views
 
             UserRepository repository = new UserRepository();
             
-            if (repository.UserExists(user))
+            if (await repository.UserExistsAsync(user))
             {
                 // Anadir logica inicio sesion
 
