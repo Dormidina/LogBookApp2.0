@@ -1,16 +1,8 @@
 ﻿using Projekt_Abschluss.Models;
-using System;
 using System.Configuration;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows;
 using Microsoft.Data.SqlClient;
 using Dapper;
-using System.Threading;
 
 namespace Projekt_Abschluss.Repositories
 {
