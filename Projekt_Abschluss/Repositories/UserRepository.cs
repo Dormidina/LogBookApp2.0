@@ -30,9 +30,8 @@ namespace Projekt_Abschluss.Repositories
 
 
             }
-            catch (Exception ex) 
+            catch
             {
-                MessageBox.Show("Database error" + ex);
                 return false;
             }
         }

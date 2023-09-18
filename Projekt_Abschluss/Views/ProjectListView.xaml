@@ -7,6 +7,16 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <Button Content="Create Proyect" Margin="5" Padding="5"/>
+            <Button Content="Create User" Margin="5" Padding="5"/>            
+        </StackPanel>
+        <DataGrid x:Name="ProjektList_DataGrid" Grid.Row="1">
             
+        </DataGrid>            
     </Grid>
 </UserControl>
