@@ -16,6 +16,7 @@ namespace Projekt_Abschluss.Views
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
+
             ProjectModel model = new ProjectModel
             {
                 Name = NameProject.Text,

@@ -20,9 +20,11 @@ namespace Projekt_Abschluss.Views
     
     public partial class LoggingView : UserControl
     {
-        public LoggingView()
+        public MainWindow MainWindow { get; set; }
+        public LoggingView(MainWindow mainWindow)
         {
             InitializeComponent();
+            MainWindow = mainWindow;
         }
 
         private async void LoggingButton_ClickAsync(object sender, RoutedEventArgs e)
@@ -37,8 +39,7 @@ namespace Projekt_Abschluss.Views
             
             if (await repository.UserExistsAsync(user))
             {
-                // Anadir logica inicio sesion
-
+                MainWindow.LoggingSuccess();
             }
             else
             {

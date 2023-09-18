@@ -5,10 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projekt_Abschluss"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
-        xmlns:Views="clr-namespace:Projekt_Abschluss.Views">
+        Title="MainWindow" Height="450" Width="800">
     
-    <Grid>
-        <Views:LoggingView/>
+    <Grid x:Name="MainGrid">
+        
     </Grid>
 </Window>
