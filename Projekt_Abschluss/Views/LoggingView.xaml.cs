@@ -37,7 +37,7 @@ namespace Projekt_Abschluss.Views
 
             UserRepository repository = new UserRepository();
             
-            if (await repository.UserExistsAsync(user))
+            if (await repository.ExistsAsync(user))
             {
                 MainWindow.LoggingSuccess();
             }

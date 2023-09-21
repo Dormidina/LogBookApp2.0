@@ -8,13 +8,16 @@ namespace Projekt_Abschluss.Repositories
 {
     public class UserRepository
     {
-        public async Task<bool> UserExistsAsync(UserModel user)
+        private readonly string _stringConnection;
+        public UserRepository()
+        {
+            _stringConnection = ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString;
+        }
+        public async Task<bool> ExistsAsync(UserModel user)
         {
             try
-            {
-                string stringConnection = ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString;
-                SqlConnection connection = new SqlConnection(stringConnection);
-
+            {                
+                SqlConnection connection = new SqlConnection(_stringConnection);
                 connection.Open();
 
                 var query = @"SELECT COUNT(*) FROM Users WHERE Name = @Name AND Password = @Password";
@@ -25,6 +28,22 @@ namespace Projekt_Abschluss.Repositories
             catch
             {
 
+                return false;
+            }
+        }
+        public async Task<bool> CreateAsync(UserModel user)
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(_stringConnection);
+                connection.Open();
+
+                var query = @"INSERT INTO Users (Name, Password) VALUES(@Name, @Password)";
+                var affectedRows = await connection.ExecuteAsync(query, new { user.Name, user.Password });
+                return affectedRows > 0;
+            }
+            catch
+            {
                 return false;
             }
         }

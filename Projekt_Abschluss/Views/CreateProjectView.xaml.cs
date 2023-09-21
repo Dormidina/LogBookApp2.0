@@ -1,12 +1,12 @@
 ﻿using Projekt_Abschluss.Models;
+using Projekt_Abschluss.Repositories;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace Projekt_Abschluss.Views
 {
-    /// <summary>
-    /// Lógica de interacción para CreateProjectView.xaml
-    /// </summary>
+    
     public partial class CreateProjectView : UserControl
     {
         public CreateProjectView()
@@ -14,9 +14,9 @@ namespace Projekt_Abschluss.Views
             InitializeComponent();
         }
 
-        private void ConfirmButton_Click(object sender, RoutedEventArgs e)
+        private async void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
-
+            
             ProjectModel model = new ProjectModel
             {
                 Name = NameProject.Text,
@@ -24,6 +24,18 @@ namespace Projekt_Abschluss.Views
                 Company = CompanyProject.Text
             };
 
+            ProjectRepository projectRepository = new ProjectRepository();
+            await projectRepository.CreateAsync(model);
+            CancelButton_Click(sender, e);
+
+
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window parentWindow = Window.GetWindow(this);
+
+            parentWindow?.Close();
         }
     }
 }

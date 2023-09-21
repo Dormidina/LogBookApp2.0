@@ -16,24 +16,13 @@ using System.Windows.Shapes;
 namespace Projekt_Abschluss.Views
 {
     /// <summary>
-    /// Lógica de interacción para ProjectListView.xaml
+    /// Lógica de interacción para CreateUserView.xaml
     /// </summary>
-    public partial class ProjectListView : UserControl
+    public partial class CreateUserView : UserControl
     {
-        public ProjectListView()
+        public CreateUserView()
         {
             InitializeComponent();
-        }
-
-        private void CreateProjectButton_Click(object sender, RoutedEventArgs e)
-        {
-            Window window = new Window
-            {
-                Title = "Create new Project",
-                Content = new CreateProjectView()
-            };
-
-            window.ShowDialog();
         }
     }
 }

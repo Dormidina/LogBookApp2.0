@@ -13,10 +13,8 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <ToggleButton x:Name="CreateProjectButton" Content="Create Proyect" Margin="5" Padding="5"/>
-            <Popup IsOpen="{Binding IsChecked, ElementName=CreateProjectButton}">
-                <local:CreateProjectView/>
-            </Popup>
+            <Button x:Name="CreateProjectButton" Click="CreateProjectButton_Click" Content="Create Proyect" Margin="5" Padding="5"/>
+            
             <Button Content="Create User" Margin="5" Padding="5"/>            
         </StackPanel>
         <DataGrid x:Name="ProjektList_DataGrid" Grid.Row="1">
