@@ -42,6 +42,23 @@ namespace Projekt_Abschluss.Repositories
                 var affectedRows = await connection.ExecuteAsync(query, new { user.Name, user.Password });
                 return affectedRows > 0;
             }
+            catch 
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> ExistsNameAsync(UserModel user)
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(_stringConnection);
+                connection.Open();
+
+                var query = @"SELECT Users COUNT(*) FROM Users WHERE Name = @Name AND Password = @Password"")";
+                var affectedRows = await connection.ExecuteAsync(query, new { user.Name, user.Password });
+                return affectedRows > 0;
+            }
             catch
             {
                 return false;

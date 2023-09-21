@@ -35,5 +35,18 @@ namespace Projekt_Abschluss.Views
 
             window.ShowDialog();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Window window = new Window
+            {
+                Title = "Create new User",
+                Content = new CreateUserView()
+
+            };
+            
+            window.ShowDialog();
+
+        }
     }
 }
