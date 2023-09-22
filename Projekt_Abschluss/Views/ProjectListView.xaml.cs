@@ -37,6 +37,7 @@ namespace Projekt_Abschluss.Views
             };
 
             window.ShowDialog();
+            GetAllProjects();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

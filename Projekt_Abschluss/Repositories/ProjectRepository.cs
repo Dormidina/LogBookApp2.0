@@ -23,8 +23,8 @@ namespace Projekt_Abschluss.Repositories
                 SqlConnection connection = new SqlConnection(_stringConnection);
                 connection.Open();
 
-                var query = @"INSERT INTO Projects (Name, Description, Company_ID) VALUES (@Name, @Description, @Company)";
-                var userCount = await connection.ExecuteScalarAsync<int>(query, new { projectModel.Name, projectModel.Description, projectModel.Company });
+                var query = @"INSERT INTO Projects (Name, Description, Company_ID) VALUES (@Name, @Description, @Company_ID)";
+                var userCount = await connection.ExecuteScalarAsync<int>(query, new { projectModel.Name, projectModel.Description, projectModel.Company_ID });
                 return true;
 
             }
