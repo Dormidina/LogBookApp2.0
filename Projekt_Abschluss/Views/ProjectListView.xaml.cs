@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Projekt_Abschluss.Models;
+using Projekt_Abschluss.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,7 @@ namespace Projekt_Abschluss.Views
         public ProjectListView()
         {
             InitializeComponent();
+            GetAllProjects();
         }
 
         private void CreateProjectButton_Click(object sender, RoutedEventArgs e)
@@ -47,6 +50,13 @@ namespace Projekt_Abschluss.Views
             
             window.ShowDialog();
 
+        }
+
+        private async void GetAllProjects()
+        {
+            ProjectRepository projectRepository = new ProjectRepository();
+            var projects = await projectRepository.GetAllAsync();
+            ProjektList_DataGrid.ItemsSource = projects;
         }
     }
 }

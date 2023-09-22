@@ -18,7 +18,7 @@
             <Button Content="Create User" Margin="5" Padding="5" Click="Button_Click"/>            
         </StackPanel>
         <DataGrid x:Name="ProjektList_DataGrid" Grid.Row="1">
-            
+                        
         </DataGrid>            
     </Grid>
 </UserControl>

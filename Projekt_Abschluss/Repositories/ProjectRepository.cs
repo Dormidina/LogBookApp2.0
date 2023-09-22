@@ -1,8 +1,11 @@
 ﻿using Dapper;
 using Microsoft.Data.SqlClient;
 using Projekt_Abschluss.Models;
+using System.Collections.Generic;
 using System.Configuration;
+using System.Linq;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Projekt_Abschluss.Repositories
 {
@@ -28,6 +31,24 @@ namespace Projekt_Abschluss.Repositories
             catch
             {
                 return false;
+            }
+        }
+
+        public async Task<List<ProjectModel>> GetAllAsync()
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(_stringConnection);
+                connection.Open();
+
+                var query = @"SELECT * FROM Projects";
+                var projects = await connection.QueryAsync<ProjectModel>(query);
+                return projects.ToList();
+
+            }
+            catch
+            {
+                throw;
             }
         }
     }

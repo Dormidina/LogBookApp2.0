@@ -55,8 +55,9 @@ namespace Projekt_Abschluss.Repositories
                 SqlConnection connection = new SqlConnection(_stringConnection);
                 connection.Open();
 
-                var query = @"SELECT Users COUNT(*) FROM Users WHERE Name = @Name AND Password = @Password"")";
+                var query = @"SELECT Users COUNT(*) FROM Users WHERE Name = @Name";
                 var affectedRows = await connection.ExecuteAsync(query, new { user.Name, user.Password });
+                
                 return affectedRows > 0;
             }
             catch
