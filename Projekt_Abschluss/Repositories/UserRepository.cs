@@ -13,7 +13,7 @@ namespace Projekt_Abschluss.Repositories
         {
             _stringConnection = ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString;
         }
-        public async Task<bool> ExistsAsync(UserModel user)
+        public async Task<bool> LogInAsync(UserLogInModel user)
         {
             try
             {                
@@ -31,7 +31,27 @@ namespace Projekt_Abschluss.Repositories
                 return false;
             }
         }
-        public async Task<bool> CreateAsync(UserModel user)
+
+        public async Task<bool> ExistsAsync(string userName)
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(_stringConnection);
+                connection.Open();
+
+                var query = @"SELECT COUNT(*) FROM Users WHERE Name = @Name";
+                var userCount = await connection.ExecuteScalarAsync<int>(query, new { Name = userName });
+                return userCount > 0;
+
+            }
+            catch
+            {
+
+                return false;
+            }
+        }
+
+        public async Task<bool> CreateAsync(UserCreateModel user)
         {
             try
             {
@@ -47,24 +67,7 @@ namespace Projekt_Abschluss.Repositories
                 return false;
             }
         }
-
-        public async Task<bool> ExistsNameAsync(UserModel user)
-        {
-            try
-            {
-                SqlConnection connection = new SqlConnection(_stringConnection);
-                connection.Open();
-
-                var query = @"SELECT Users COUNT(*) FROM Users WHERE Name = @Name";
-                var affectedRows = await connection.ExecuteAsync(query, new { user.Name, user.Password });
                 
-                return affectedRows > 0;
-            }
-            catch
-            {
-                return false;
-            }
-        }
     } 
 
 

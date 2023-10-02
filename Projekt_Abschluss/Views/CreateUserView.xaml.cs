@@ -15,16 +15,17 @@ namespace Projekt_Abschluss.Views
 
         private async void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
-            UserModel userModel = new UserModel
+            UserCreateModel userModel = new UserCreateModel
             {
                 Name = UserName.Text,
-                Password = UserPassword.Password
+                Password = UserPassword.Password,
+                IsAdmin = AdminCheck.IsChecked.GetValueOrDefault(false)
             };
 
 
 
             UserRepository userRepository = new UserRepository();
-            var existsUser = await userRepository.ExistsAsync(userModel);
+            var existsUser = await userRepository.ExistsAsync(userModel.Name);
             if (existsUser)
             {
                 MessageBox.Show("User Already Exists");

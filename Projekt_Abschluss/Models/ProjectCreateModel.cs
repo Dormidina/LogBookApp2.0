@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Projekt_Abschluss.Models
 {
-    public class ProjectModel
+    public class ProjectCreateModel
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public string CompanyName { get; set; }
+        public string Company_ID { get; set; }
     }
 }

@@ -20,11 +20,11 @@ namespace Projekt_Abschluss.Views
         {
             try
             {
-                ProjectModel model = new ProjectModel
+                ProjectCreateModel model = new ProjectCreateModel
                 {
                     Name = NameProject.Text,
                     Description = DescriptionProject.Text,
-                    Company_ID = int.Parse(CompanyProject.SelectedValue.ToString())
+                    Company_ID = CompanyProject.SelectedValue.ToString()
                 };
 
                 ProjectRepository projectRepository = new ProjectRepository();

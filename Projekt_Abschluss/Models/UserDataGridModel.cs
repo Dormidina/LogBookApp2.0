@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Projekt_Abschluss.Models
 {
-    public class ProjectModel
+    public class UserDataGridModel
     {
         public string Name { get; set; }
-        public string Description { get; set; }
-        public string CompanyName { get; set; }
+        public List<string> Projects { get; set; }
+        public bool IsAdmin { get; set; }
+        
     }
 }

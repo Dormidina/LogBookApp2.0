@@ -29,7 +29,7 @@ namespace Projekt_Abschluss.Views
 
         private async void LoggingButton_ClickAsync(object sender, RoutedEventArgs e)
         {
-            UserModel user = new UserModel
+            UserLogInModel user = new UserLogInModel
             {
                 Name = UserTextBox.Text,
                 Password = PasswordPasswordBox.Password
@@ -37,7 +37,7 @@ namespace Projekt_Abschluss.Views
 
             UserRepository repository = new UserRepository();
             
-            if (await repository.ExistsAsync(user))
+            if (await repository.LogInAsync(user))
             {
                 MainWindow.LoggingSuccess();
             }

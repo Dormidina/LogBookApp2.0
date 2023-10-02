@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Projekt_Abschluss.Models
 {
-    public class ProjectModel
+    public class UserCreateModel
     {
         public string Name { get; set; }
-        public string Description { get; set; }
-        public string CompanyName { get; set; }
+        public string Password { get; set; }
+        public bool IsAdmin { get; set; }
     }
 }

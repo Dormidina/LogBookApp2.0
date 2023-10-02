@@ -1,6 +1,6 @@
 ﻿namespace Projekt_Abschluss.Models;
 
-public class UserModel
+public class UserLogInModel
 {
     public string Name { get; set; }
     public string Password { get; set; }

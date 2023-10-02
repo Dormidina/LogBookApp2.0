@@ -18,7 +18,7 @@ namespace Projekt_Abschluss
         {
 
             MainGrid.Children.Clear();
-            MainGrid.Children.Add(new ProjectListView());
+            MainGrid.Children.Add(new GeneralView());
             this.WindowState = WindowState.Maximized;
         }
     }
