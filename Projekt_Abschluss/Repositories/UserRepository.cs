@@ -3,6 +3,8 @@ using System.Configuration;
 using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
 using Dapper;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Projekt_Abschluss.Repositories
 {
@@ -67,8 +69,23 @@ namespace Projekt_Abschluss.Repositories
                 return false;
             }
         }
-                
+
+        public async Task<List<UserDataGridModel>> GetAllAsync()
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(_stringConnection);
+                connection.Open();
+
+                var query = @"SELECT Name, IsAdmin FROM Users";
+                var users = await connection.QueryAsync<UserDataGridModel>(query);
+                return users.ToList();
+
+            }
+            catch
+            {
+                throw;
+            }
+        }
     } 
-
-
 }
