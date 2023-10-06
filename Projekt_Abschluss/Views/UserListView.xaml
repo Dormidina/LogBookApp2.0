@@ -12,14 +12,14 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="User" Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="Projects" Binding="{Binding Projects}"/>
-                <DataGridCheckBoxColumn Header="Admin" Binding="{Binding IsAdmin}">
-                    <DataGridCheckBoxColumn.CellStyle>
-                        <Style>
-                            <EventSetter Event="CheckBox.Checked" Handler="OnChecked"/>
-                            <EventSetter Event="CheckBox.Unchecked" Handler="OnChecked"/>
-                        </Style>
-                    </DataGridCheckBoxColumn.CellStyle>
-                </DataGridCheckBoxColumn>
+                <!--<DataGridCheckBoxColumn Header="Admin" Binding="{Binding IsAdmin}"/>-->
+               <DataGridTemplateColumn Header="Is Admin">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <CheckBox Name="AdminCheckbox" Checked="AdminCheckbox_Checked" Unchecked="AdminCheckbox_Unchecked"/>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
         

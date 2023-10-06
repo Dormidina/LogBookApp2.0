@@ -21,37 +21,32 @@ namespace Projekt_Abschluss.Views
 
     public partial class UserListView : UserControl
     {
-        private bool initialized = false;
+        
         public UserListView()
         {
             InitializeComponent();
-            GetAllUsers();
-            
+            GetAllUsers();         
 
 
 
         }
 
         private async void GetAllUsers()
-        {
-            initialized = false;
+        {            
             UserRepository userRepository = new UserRepository();
             var users = await userRepository.GetAllAsync();
             UserList_DataGrid.ItemsSource = users;
-            initialized = true;
+           
         }
 
-        private void OnChecked(object sender, RoutedEventArgs e)
+        private void AdminCheckbox_Checked(object sender, RoutedEventArgs e)
         {
-            if (initialized)
-            {
-                CheckBox checkBox = (CheckBox)e.OriginalSource;
-                DataGridRow dataGridRow = VisualTreeHelpers.FindAncestor<DataGridRow>(checkBox);
-                var user = (UserDataGridModel)dataGridRow.DataContext;
-            }
-            
+
         }
 
-        
+        private void AdminCheckbox_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
