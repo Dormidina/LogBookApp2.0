@@ -8,10 +8,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Content\iconlogbook.avif" />
+    <None Remove="Content\logbookicon.png" />
+    <None Remove="Content\logbook_icon.jpg" />
     <None Remove="Content\pcomplett.jpg" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Content\iconlogbook.avif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\logbookicon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\logbook_icon.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\pcomplett.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

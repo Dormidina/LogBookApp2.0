@@ -8,17 +8,17 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         
-        <DataGrid x:Name="UserList_DataGrid" AutoGenerateColumns="False">
+        <DataGrid x:Name="UserList_DataGrid" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="User" Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="Projects" Binding="{Binding Projects}"/>
-                <!--<DataGridCheckBoxColumn Header="Admin" Binding="{Binding IsAdmin}"/>-->
-               <DataGridTemplateColumn Header="Is Admin">
-                <DataGridTemplateColumn.CellTemplate>
-                    <DataTemplate>
-                        <CheckBox Name="AdminCheckbox" Checked="AdminCheckbox_Checked" Unchecked="AdminCheckbox_Unchecked"/>
-                    </DataTemplate>
-                </DataGridTemplateColumn.CellTemplate>
+                <DataGridCheckBoxColumn Header="Admin" Binding="{Binding IsAdmin}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button  Content="Edit User" Click="UserButtonEditClick"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>

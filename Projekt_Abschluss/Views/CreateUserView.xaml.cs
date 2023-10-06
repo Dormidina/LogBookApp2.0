@@ -15,7 +15,7 @@ namespace Projekt_Abschluss.Views
 
         private async void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
-            UserCreateModel userModel = new UserCreateModel
+            UserCreateUpdateModel userModel = new UserCreateUpdateModel
             {
                 Name = UserName.Text,
                 Password = UserPassword.Password,

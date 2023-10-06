@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Projekt_Abschluss.Models
 {
-    public class UserCreateModel
+    public class UserCreateUpdateModel
     {
         public string Name { get; set; }
         public string Password { get; set; }

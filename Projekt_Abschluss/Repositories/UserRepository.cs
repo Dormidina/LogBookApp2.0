@@ -53,7 +53,7 @@ namespace Projekt_Abschluss.Repositories
             }
         }
 
-        public async Task<bool> CreateAsync(UserCreateModel user)
+        public async Task<bool> CreateAsync(UserCreateUpdateModel user)
         {
             try
             {
@@ -83,6 +83,25 @@ namespace Projekt_Abschluss.Repositories
 
             }
             catch
+            {
+                throw;
+            }
+        }
+
+        public async Task<bool> UpdateAsync(UserCreateUpdateModel user)
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(_stringConnection);
+                connection.Open();
+
+                var query = @"UPDATE Users SET IsAdmin = @IsAdmin WHERE Name = @Name;";
+                var affectedRows = await connection.ExecuteAsync(query, new { user.Name, user.IsAdmin });
+                return affectedRows > 0;
+            }
+
+            catch
+
             {
                 throw;
             }

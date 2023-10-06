@@ -39,14 +39,22 @@ namespace Projekt_Abschluss.Views
            
         }
 
-        private void AdminCheckbox_Checked(object sender, RoutedEventArgs e)
+        private void UserButtonEditClick(object sender, RoutedEventArgs e)
         {
+            Button buttonEdit = (Button)e.OriginalSource;
+            DataGridRow dataGridRow = VisualTreeHelpers.FindAncestor<DataGridRow>(buttonEdit);
+            UserDataGridModel user = dataGridRow.DataContext as UserDataGridModel;
 
-        }
 
-        private void AdminCheckbox_Unchecked(object sender, RoutedEventArgs e)
-        {
+            Window window = new Window
+            {
+                Title = "Edit User",
+                Content = new UserEditView(user)
 
+            };
+
+            window.ShowDialog();
+            GetAllUsers();
         }
     }
 }
