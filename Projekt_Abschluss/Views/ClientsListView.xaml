@@ -7,6 +7,18 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="CreateClientButton" Content="Create Client" Margin="5" Padding="5" Click="CreateClientButton_Click"/>
+            </StackPanel>
+            <Grid>
+                <DataGrid x:Name="DatagridClients">
+
+                </DataGrid>
+            </Grid>
+            
+        </StackPanel>
+        
             
     </Grid>
 </UserControl>
