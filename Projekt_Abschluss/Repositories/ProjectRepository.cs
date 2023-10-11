@@ -41,7 +41,7 @@ namespace Projekt_Abschluss.Repositories
                 SqlConnection connection = new SqlConnection(_stringConnection);
                 connection.Open();
 
-                var query = @"SELECT P.Name, P.Description, C.Name AS CompanyName FROM Projects P
+                var query = @"SELECT P.Name, P.Description, C.Name AS CompanyName, P.Project_ID AS ProjectID FROM Projects P
                               INNER JOIN Companies C ON P.Company_ID = C.Company_ID";
                 var projects = await connection.QueryAsync<ProjectModel>(query);
                 return projects.ToList();

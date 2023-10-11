@@ -22,10 +22,12 @@ namespace Projekt_Abschluss.Views
     /// </summary>
     public partial class ProjectListView : UserControl
     {
+        
         public ProjectListView()
         {
             InitializeComponent();
             GetAllProjects();
+            
         }
 
         private void CreateProjectButton_Click(object sender, RoutedEventArgs e)
@@ -58,6 +60,20 @@ namespace Projekt_Abschluss.Views
             ProjectRepository projectRepository = new ProjectRepository();
             var projects = await projectRepository.GetAllAsync();
             ProjektList_DataGrid.ItemsSource = projects;
+        }
+
+        private async void ProjektList_DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ProjectModel selectedProject = (ProjectModel)ProjektList_DataGrid.SelectedItem;
+
+            if (selectedProject != null)
+            {
+                TaskRepository taskRepository = new TaskRepository();
+                var task = await taskRepository.GetAllTaskAsync(selectedProject.ProjectID);
+                TaskList_DataGrid.ItemsSource = task;
+            }
+            
+
         }
     }
 }

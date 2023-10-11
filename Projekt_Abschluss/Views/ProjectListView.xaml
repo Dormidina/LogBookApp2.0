@@ -10,15 +10,28 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+            <RowDefinition Height="40"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <Button x:Name="CreateProjectButton" Click="CreateProjectButton_Click" Content="Create Proyect" Margin="5" Padding="5"/>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+            <Button x:Name="CreateProjectButton" Click="CreateProjectButton_Click" Content="Create Proyect" Margin="5" Padding="5"/>            
             <Button Content="Create User" Margin="5" Padding="5" Click="Button_Click"/>            
         </StackPanel>
-        <DataGrid x:Name="ProjektList_DataGrid" Grid.Row="1">
-                        
-        </DataGrid>            
+        <Label Content="Projects" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="20"/>
+        <DataGrid x:Name="ProjektList_DataGrid" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" SelectionChanged="ProjektList_DataGrid_SelectionChanged" SelectionMode="Single" IsReadOnly="True">                        
+        </DataGrid>
+        <Separator VerticalAlignment="Top" Height="1" Background="Black" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>      
+        <Label Content="Tasks" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="20"/>
+        <DataGrid x:Name="TaskList_DataGrid" Grid.Row="5" Grid.Column="0">
+            
+        </DataGrid>
+
+        
     </Grid>
 </UserControl>
