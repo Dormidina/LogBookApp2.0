@@ -24,14 +24,32 @@
             <Button Content="Create User" Margin="5" Padding="5" Click="Button_Click"/>            
         </StackPanel>
         <Label Content="Projects" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="20"/>
-        <DataGrid x:Name="ProjektList_DataGrid" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" SelectionChanged="ProjektList_DataGrid_SelectionChanged" SelectionMode="Single" IsReadOnly="True">                        
+        <DataGrid x:Name="ProjektList_DataGrid" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" SelectionChanged="ProjektList_DataGrid_SelectionChanged" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name"  Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*"/>
+                <DataGridTextColumn Header="Company Name" Binding="{Binding CompanyName}"/>
+            </DataGrid.Columns>
         </DataGrid>
         <Separator VerticalAlignment="Top" Height="1" Background="Black" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>      
         <Label Content="Tasks" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="20"/>
-        <DataGrid x:Name="TaskList_DataGrid" Grid.Row="5" Grid.Column="0">
+        <DataGrid x:Name="TaskList_DataGrid" Grid.Row="5" Grid.Column="0" IsReadOnly="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*"/>
+                <DataGridTextColumn Header="Worker Assigment" Binding="{Binding UserName}"/>
+                <DataGridTextColumn Header="Estimated Time" Binding="{Binding EstimatedTime}"/>
+                <DataGridTextColumn Header="Real Time" Binding="{Binding RealTime}"/>
+                <DataGridTextColumn Header="Priority" Binding="{Binding Priority}"/>
+                <DataGridTextColumn Header="Date Start" Binding="{Binding DateStart, StringFormat={}{0:dd/MM/yyyy}}"/>
+                <DataGridTextColumn Header="Date End" Binding="{Binding DateEnd, StringFormat={}{0:dd/MM/yyyy}}"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}"/>
+            </DataGrid.Columns>
             
         </DataGrid>
-
+        <local:EditTaskView Grid.Column="1" Grid.Row="4">
+            
+        </local:EditTaskView>
         
     </Grid>
 </UserControl>

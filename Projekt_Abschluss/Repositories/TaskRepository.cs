@@ -26,7 +26,7 @@ namespace Projekt_Abschluss.Repositories
 
                 var query = @"SELECT Task_ID AS TaskID, 
                             Name, Description, Estimated_Time AS EstimatedTime, Real_Time AS RealTime, 
-                            Priority, Date_Start AS DateStart, Date_End AS DateEnd , Status FROM Tasks WHERE Project_ID = @projectID";
+                            Priority, Date_Start AS DateStart, Date_End AS DateEnd , UserName, Status FROM Tasks WHERE Project_ID = @projectID";
 
                 var tasks = await connection.QueryAsync<TaskModel>(query, new { projectID });
                 return tasks.ToList();

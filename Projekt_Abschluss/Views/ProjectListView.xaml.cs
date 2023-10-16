@@ -17,9 +17,7 @@ using System.Windows.Shapes;
 
 namespace Projekt_Abschluss.Views
 {
-    /// <summary>
-    /// Lógica de interacción para ProjectListView.xaml
-    /// </summary>
+    
     public partial class ProjectListView : UserControl
     {
         

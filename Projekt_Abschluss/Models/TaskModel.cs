@@ -11,6 +11,7 @@ namespace Projekt_Abschluss.Models
         public int TaskID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public string UserName { get; set; }
         public int EstimatedTime { get; set; }
         public int RealTime { get; set; }
         public int Priority { get; set; }
