@@ -25,7 +25,7 @@ namespace Projekt_Abschluss.Views
         {
             InitializeComponent();
             GetAllProjects();
-            
+            TaskColumnsView.EditTaskView = DetailsTaskView;            
         }
 
         private void CreateProjectButton_Click(object sender, RoutedEventArgs e)
@@ -68,10 +68,12 @@ namespace Projekt_Abschluss.Views
             {
                 TaskRepository taskRepository = new TaskRepository();
                 var task = await taskRepository.GetAllTaskAsync(selectedProject.ProjectID);
-                TaskList_DataGrid.ItemsSource = task;
+                TaskColumnsView.SetTasks(task);
             }
-            
+
 
         }
+
+        
     }
 }

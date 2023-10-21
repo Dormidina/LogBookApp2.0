@@ -37,5 +37,24 @@ namespace Projekt_Abschluss.Repositories
                 throw;
             }
         }
+
+        public async Task<bool> UpdateStatusAsync(int taskID, int  newStatus)
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(_stringConnection);
+                connection.Open();
+
+                var query = @"UPDATE Tasks SET Status = @newStatus WHERE Task_ID = @taskID";
+
+                var affectedRows = await connection.ExecuteAsync(query, new { taskID, newStatus });
+                return affectedRows > 0;
+
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

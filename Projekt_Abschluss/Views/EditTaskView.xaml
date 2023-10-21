@@ -22,7 +22,7 @@
                 <RowDefinition Height="75"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="EDIT TASK" HorizontalContentAlignment="Center" FontSize="25"/>
+            <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="TASK INFO" HorizontalContentAlignment="Center" FontSize="25"/>
 
             <StackPanel Grid.Column="0" Grid.Row="1">
                 <Grid Margin="5">
