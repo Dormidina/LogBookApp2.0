@@ -1,4 +1,5 @@
-﻿using Projekt_Abschluss.Views;
+﻿using Projekt_Abschluss.Models;
+using Projekt_Abschluss.Views;
 using System.Windows;
 
 namespace Projekt_Abschluss

@@ -21,6 +21,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="75"/>
                 <RowDefinition/>
+                <RowDefinition Height="75"/>
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="TASK INFO" HorizontalContentAlignment="Center" FontSize="25"/>
 
@@ -31,7 +32,7 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Label Content="Name" Grid.Column="0"/>
-                    <TextBox Grid.Column="1"/>
+                    <TextBox x:Name="TaskName" Grid.Column="1"/>
                 </Grid>
                 <Grid Margin="5">
                     <Grid.ColumnDefinitions>
@@ -39,7 +40,7 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Label Content="Description" Grid.Column="0"/>
-                    <TextBox VerticalScrollBarVisibility="Auto" 
+                    <TextBox x:Name="TaskDescription" VerticalScrollBarVisibility="Auto" 
                          HorizontalScrollBarVisibility="Auto" 
                          AcceptsReturn="True" 
                          AcceptsTab="True" 
@@ -52,7 +53,7 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Label Content="Estimated Time" Grid.Column="0"/>
-                    <TextBox Grid.Column="1"/>
+                    <TextBox x:Name="TaskEstimatedTime" Grid.Column="1"/>
                 </Grid>
 
 
@@ -62,7 +63,7 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Label Content="Real Time" Grid.Column="0"/>
-                    <TextBox Grid.Column="1"/>
+                    <TextBox x:Name="TaskRealTime" Grid.Column="1"/>
                 </Grid>
                 <Grid Margin="5">
                     <Grid.ColumnDefinitions>
@@ -70,7 +71,7 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Label Content="Priority" Grid.Column="0"/>
-                    <TextBox Grid.Column="1"/>
+                    <TextBox x:Name="TaskPriority" Grid.Column="1"/>
                 </Grid>
             </StackPanel>
 
@@ -81,7 +82,7 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Label Content="Date Start" Grid.Column="0"/>
-                    <TextBox Grid.Column="1"/>
+                    <TextBox x:Name="TaskDateStart" Grid.Column="1"/>
                 </Grid>
                 <Grid Margin="5">
                     <Grid.ColumnDefinitions>
@@ -89,7 +90,7 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Label Content="Date End" Grid.Column="0"/>
-                    <TextBox Grid.Column="1"/>
+                    <TextBox x:Name="TaskDateEnd" Grid.Column="1"/>
                 </Grid>
                 <Grid Margin="5">
                     <Grid.ColumnDefinitions>
@@ -97,7 +98,7 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Label Content="Status" Grid.Column="0"/>
-                    <TextBox Grid.Column="1"/>
+                    <TextBox x:Name="TaskStatus" Grid.Column="1"/>
                 </Grid>
 
 
@@ -107,15 +108,17 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Label Content="Worker" Grid.Column="0"/>
-                    <TextBox Grid.Column="1"/>
+                    <ComboBox x:Name="TaskWorker" Grid.Column="1"/>
                 </Grid>
                 <Grid Margin="5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                </Grid>
+                </Grid>                
             </StackPanel>
+
+            <Button x:Name="UpdateButton" Content="Update" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Width="200" Height="50" Click="UpdateButton_Click"/>
 
         </Grid>
     </Border>

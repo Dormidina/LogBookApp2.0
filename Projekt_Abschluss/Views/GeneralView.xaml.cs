@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Projekt_Abschluss.Helpers;
+using Projekt_Abschluss.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,15 +16,21 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Projekt_Abschluss.Views
-{
-    /// <summary>
-    /// Lógica de interacción para GeneralView.xaml
-    /// </summary>
+{    
     public partial class GeneralView : UserControl
     {
         public GeneralView()
         {
             InitializeComponent();
-        }
+
+            if (LogInHelper.Session.IsAdmin == false)
+            {
+                UsersTab.Visibility = Visibility.Collapsed;
+
+            }
+            
+            
+            
+        }       
     }
 }

@@ -1,4 +1,5 @@
-﻿using Projekt_Abschluss.Models;
+﻿using Projekt_Abschluss.Helpers;
+using Projekt_Abschluss.Models;
 using Projekt_Abschluss.Repositories;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ using System.Windows.Shapes;
 
 namespace Projekt_Abschluss.Views
 {
-    
+
     public partial class LoggingView : UserControl
     {
         public MainWindow MainWindow { get; set; }
@@ -36,9 +37,13 @@ namespace Projekt_Abschluss.Views
             };
 
             UserRepository repository = new UserRepository();
+
+            var userLogIn = await repository.LogInAsync(user);
             
-            if (await repository.LogInAsync(user))
+
+            if (userLogIn != null)
             {
+                LogInHelper.Session = userLogIn;
                 MainWindow.LoggingSuccess();
             }
             else
@@ -46,9 +51,9 @@ namespace Projekt_Abschluss.Views
                 MessageBox.Show("Logging Error");
             }
 
-            
-            
-            
+
+
+
         }
     }
 }

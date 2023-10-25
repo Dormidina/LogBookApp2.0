@@ -21,7 +21,7 @@
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
             <Button x:Name="CreateProjectButton" Click="CreateProjectButton_Click" Content="Create Proyect" Margin="5" Padding="5"/>            
-            <Button Content="Create User" Margin="5" Padding="5" Click="Button_Click"/>            
+            <Button x:Name="CreateUserButton"  Content="Create User" Margin="5" Padding="5" Click="Button_Click"/>            
         </StackPanel>
         <Label Content="Projects" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="20"/>
         <DataGrid x:Name="ProjektList_DataGrid" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" SelectionChanged="ProjektList_DataGrid_SelectionChanged" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False">

@@ -1,4 +1,5 @@
-﻿using Projekt_Abschluss.Models;
+﻿using Projekt_Abschluss.Helpers;
+using Projekt_Abschluss.Models;
 using Projekt_Abschluss.Repositories;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,13 @@ namespace Projekt_Abschluss.Views
         {
             InitializeComponent();
             GetAllProjects();
-            TaskColumnsView.EditTaskView = DetailsTaskView;            
+            TaskColumnsView.EditTaskView = DetailsTaskView;
+
+            if (LogInHelper.Session.IsAdmin == false)
+            {
+                CreateUserButton.Visibility = Visibility.Collapsed;
+
+            }
         }
 
         private void CreateProjectButton_Click(object sender, RoutedEventArgs e)

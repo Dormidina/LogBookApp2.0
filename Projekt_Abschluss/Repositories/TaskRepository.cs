@@ -38,7 +38,7 @@ namespace Projekt_Abschluss.Repositories
             }
         }
 
-        public async Task<bool> UpdateStatusAsync(int taskID, int  newStatus)
+        public async Task<bool> UpdateStatusAsync(int taskID, int newStatus)
         {
             try
             {
@@ -48,6 +48,35 @@ namespace Projekt_Abschluss.Repositories
                 var query = @"UPDATE Tasks SET Status = @newStatus WHERE Task_ID = @taskID";
 
                 var affectedRows = await connection.ExecuteAsync(query, new { taskID, newStatus });
+                return affectedRows > 0;
+
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> UpdateTaskAsync(TaskModel task)
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(_stringConnection);
+                connection.Open();
+
+                var query = @"UPDATE Tasks
+                                  SET [Name] = @Name
+                                  ,[Description] = @Description
+                                  ,[Estimated_Time] = @EstimatedTime
+                                  ,[Real_Time] = @RealTime
+                                  ,[Priority] = @Priority
+                                  ,[Date_Start] = @DateStart
+                                  ,[Date_End] = @DateEnd      
+                                  ,[Status] = @Status
+                                  ,[UserName] = @UserName
+                                  WHERE Task_ID = @TaskID";
+
+                var affectedRows = await connection.ExecuteAsync(query, new { });
                 return affectedRows > 0;
 
             }

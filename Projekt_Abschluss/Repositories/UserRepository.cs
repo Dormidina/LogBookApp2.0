@@ -5,6 +5,7 @@ using Microsoft.Data.SqlClient;
 using Dapper;
 using System.Collections.Generic;
 using System.Linq;
+using Projekt_Abschluss.Helpers;
 
 namespace Projekt_Abschluss.Repositories
 {
@@ -15,22 +16,21 @@ namespace Projekt_Abschluss.Repositories
         {
             _stringConnection = ConfigurationManager.ConnectionStrings["MyConnection"].ConnectionString;
         }
-        public async Task<bool> LogInAsync(UserLogInModel user)
+        public async Task<UserLogInSessionModel?> LogInAsync(UserLogInModel user)
         {
             try
             {                
                 SqlConnection connection = new SqlConnection(_stringConnection);
                 connection.Open();
 
-                var query = @"SELECT COUNT(*) FROM Users WHERE Name = @Name AND Password = @Password";
-                var userCount = await connection.ExecuteScalarAsync<int>(query, new {user.Name, user.Password});
-                return userCount > 0;               
+                var query = @"SELECT Name, IsAdmin FROM Users WHERE Name = @Name AND Password = @Password";
+                var userLog = await connection.QueryFirstOrDefaultAsync<UserLogInSessionModel>(query, new {user.Name, user.Password});                
+                return userLog;               
 
             }
             catch
             {
-
-                return false;
+                return null;
             }
         }
 
@@ -98,6 +98,25 @@ namespace Projekt_Abschluss.Repositories
                 var query = @"UPDATE Users SET IsAdmin = @IsAdmin WHERE Name = @Name;";
                 var affectedRows = await connection.ExecuteAsync(query, new { user.Name, user.IsAdmin });
                 return affectedRows > 0;
+            }
+
+            catch
+
+            {
+                throw;
+            }
+        }
+
+        public  List<string> GetAllNames()
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(_stringConnection);
+                connection.Open();
+
+                var query = @"SELECT Name From Users";
+                var users = connection.Query<string>(query);
+                return users.ToList();
             }
 
             catch

@@ -86,7 +86,7 @@ namespace Projekt_Abschluss.Views
             var selectedTask = listView.SelectedItem as TaskModel;
             if (selectedTask != null)
             {
-
+                EditTaskView.Task = selectedTask;
             }
         }
     }

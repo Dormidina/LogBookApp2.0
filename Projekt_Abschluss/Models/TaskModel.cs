@@ -17,7 +17,8 @@ namespace Projekt_Abschluss.Models
         public int Priority { get; set; }
         public DateTime DateStart { get; set; }
         public DateTime DateEnd { get; set; }
-        public int Status { get; set; }
+        public int Status { get; set; }       
+        
 
         public override string ToString()
         {

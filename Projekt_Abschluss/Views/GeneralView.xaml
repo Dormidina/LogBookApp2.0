@@ -11,7 +11,7 @@
             <TabItem Header="Projects">
                 <local:ProjectListView/>
             </TabItem>
-            <TabItem Header="Users">
+            <TabItem x:Name="UsersTab" Header="Users">
                 <local:UserListView/>
             </TabItem>
             <TabItem Header="Clients">
