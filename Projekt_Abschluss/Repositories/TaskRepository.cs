@@ -76,7 +76,7 @@ namespace Projekt_Abschluss.Repositories
                                   ,[UserName] = @UserName
                                   WHERE Task_ID = @TaskID";
 
-                var affectedRows = await connection.ExecuteAsync(query, new { });
+                var affectedRows = await connection.ExecuteAsync(query, new { task.Name, task.Description, task.EstimatedTime, task.RealTime, task.Priority, task.DateStart, task.DateEnd, task.Status, task.UserName, task.TaskID});
                 return affectedRows > 0;
 
             }

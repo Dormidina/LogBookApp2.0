@@ -33,7 +33,7 @@ namespace Projekt_Abschluss.Views
                 TaskDateStart.Text = task.DateStart.ToString();
                 TaskDateEnd.Text = task.DateEnd.ToString();
                 TaskStatus.Text = task.Status.ToString();
-                TaskWorker.Text = task.UserName;
+                TaskWorker.SelectedItem = task.UserName;
             }
         }
 
@@ -47,8 +47,30 @@ namespace Projekt_Abschluss.Views
             TaskWorker.ItemsSource = Users;
         }
 
-        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        private async void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
+            TaskRepository repository = new TaskRepository();           
+
+            Task.Name = TaskName.Text;
+            Task.Description = TaskDescription.Text;
+            Task.EstimatedTime = TaskEstimatedTime.Value;
+            Task.RealTime = TaskRealTime.Value;
+            Task.Priority = TaskPriority.Value ?? 0;
+            Task.DateStart = TaskDateStart.SelectedDate;
+            Task.DateEnd = TaskDateEnd.SelectedDate;
+            Task.Status = TaskStatus.Value ?? 0;
+            Task.UserName = TaskWorker.Text;            
+
+            var updateSuccess = await repository.UpdateTaskAsync(Task);
+
+            if (updateSuccess)
+            {
+                MessageBox.Show("Task Updated");    
+            }
+            else
+            {
+                MessageBox.Show("Error Updating Task");
+            }
             
         }
     }

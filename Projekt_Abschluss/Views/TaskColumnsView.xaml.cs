@@ -40,17 +40,19 @@ namespace Projekt_Abschluss.Views
 
         public void SetTasks(List<TaskModel> tasks)
         {
-            StatusTaskList[0] = new ObservableCollection<TaskModel>(tasks.Where(task => task.Status == 0));
-            StatusTaskList[1] = new ObservableCollection<TaskModel>(tasks.Where(task => task.Status == 1));
-            StatusTaskList[2] = new ObservableCollection<TaskModel>(tasks.Where(task => task.Status == 2));
-            StatusTaskList[3] = new ObservableCollection<TaskModel>(tasks.Where(task => task.Status == 3));
-            StatusTaskList[4] = new ObservableCollection<TaskModel>(tasks.Where(task => task.Status == 4));
+            StatusTaskList[0] = new ObservableCollection<TaskModel>(tasks.Where(task => task.Status == 0).OrderBy(task => task.Priority));
+            StatusTaskList[1] = new ObservableCollection<TaskModel>(tasks.Where(task => task.Status == 1).OrderBy(task => task.Priority));
+            StatusTaskList[2] = new ObservableCollection<TaskModel>(tasks.Where(task => task.Status == 2).OrderBy(task => task.Priority));
+            StatusTaskList[3] = new ObservableCollection<TaskModel>(tasks.Where(task => task.Status == 3).OrderBy(task => task.Priority));
+            StatusTaskList[4] = new ObservableCollection<TaskModel>(tasks.Where(task => task.Status == 4).OrderBy(task => task.Priority));
 
             StatusListView[0].ItemsSource = StatusTaskList[0];
             StatusListView[1].ItemsSource = StatusTaskList[1];
             StatusListView[2].ItemsSource = StatusTaskList[2];
             StatusListView[3].ItemsSource = StatusTaskList[3];
             StatusListView[4].ItemsSource = StatusTaskList[4];
+
+
         }
 
         private async void MoveTaskClickButton(object sender, RoutedEventArgs e)
@@ -84,10 +86,23 @@ namespace Projekt_Abschluss.Views
         {
             ListView listView = (ListView)sender;
             var selectedTask = listView.SelectedItem as TaskModel;
+
             if (selectedTask != null)
             {
                 EditTaskView.Task = selectedTask;
+
+                for (int i = 0; i < StatusListView.Length; i++)
+                {
+                    if (StatusListView[i] != listView)
+                    {
+                        StatusListView[i].SelectedItem = null;
+                    }
+                }
+
             }
+
+            
+
         }
     }
 
