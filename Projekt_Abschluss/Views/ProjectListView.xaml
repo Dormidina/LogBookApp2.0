@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Projekt_Abschluss.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
+             d:DesignHeight="1000" d:DesignWidth="1500"
              >
     <Grid>
         <Grid.RowDefinitions>
@@ -21,7 +21,8 @@
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
             <Button x:Name="CreateProjectButton" Click="CreateProjectButton_Click" Content="Create Proyect" Margin="5" Padding="5"/>            
-            <Button x:Name="CreateUserButton"  Content="Create User" Margin="5" Padding="5" Click="Button_Click"/>            
+            <Button x:Name="CreateUserButton" Content="Create User" Margin="5" Padding="5" Click="Button_Click"/>
+            <Button x:Name="CreateTaskButton" Content="Create New Task" Margin="5" Padding="5" Click="CreateTaskButton_Click"/>
         </StackPanel>
         <Label Content="Projects" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="20"/>
         <DataGrid x:Name="ProjektList_DataGrid" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" SelectionChanged="ProjektList_DataGrid_SelectionChanged" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False">
@@ -33,20 +34,6 @@
         </DataGrid>
         <Separator VerticalAlignment="Top" Height="1" Background="Black" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>      
         <Label Content="Tasks" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="20"/>
-        <!--<DataGrid x:Name="TaskList_DataGrid" Grid.Row="5" Grid.Column="0" IsReadOnly="True" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*"/>
-                <DataGridTextColumn Header="Worker Assigment" Binding="{Binding UserName}"/>
-                <DataGridTextColumn Header="Estimated Time" Binding="{Binding EstimatedTime}"/>
-                <DataGridTextColumn Header="Real Time" Binding="{Binding RealTime}"/>
-                <DataGridTextColumn Header="Priority" Binding="{Binding Priority}"/>
-                <DataGridTextColumn Header="Date Start" Binding="{Binding DateStart, StringFormat={}{0:dd/MM/yyyy}}"/>
-                <DataGridTextColumn Header="Date End" Binding="{Binding DateEnd, StringFormat={}{0:dd/MM/yyyy}}"/>
-                <DataGridTextColumn Header="Status" Binding="{Binding Status}"/>
-            </DataGrid.Columns>
-            
-        </DataGrid>-->
         <local:TaskColumnsView x:Name="TaskColumnsView" Grid.Column="0" Grid.Row="4">
             
         </local:TaskColumnsView>

@@ -78,9 +78,28 @@ namespace Projekt_Abschluss.Views
                 TaskColumnsView.SetTasks(task);
             }
 
-
+            DetailsTaskView.CleanView();
         }
 
-        
+        private void CreateTaskButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window window = new Window
+            {
+                Title = "Create new Task",
+                Content = new CreateTaskView(),
+                MaxWidth = 800,
+                MaxHeight = 520,
+                
+            };
+
+            window.ShowDialog();
+
+
+            GetAllProjects();
+
+            ProjectModel selectedProject = (ProjectModel)ProjektList_DataGrid.SelectedItem;
+            ProjektList_DataGrid.SelectedItem = null;
+            ProjektList_DataGrid.SelectedItem = selectedProject;
+        }
     }
 }

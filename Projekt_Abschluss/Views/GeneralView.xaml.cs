@@ -2,6 +2,7 @@
 using Projekt_Abschluss.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Projekt_Abschluss.Views
-{    
+{
     public partial class GeneralView : UserControl
     {
         public GeneralView()
@@ -26,11 +27,7 @@ namespace Projekt_Abschluss.Views
             if (LogInHelper.Session.IsAdmin == false)
             {
                 UsersTab.Visibility = Visibility.Collapsed;
-
             }
-            
-            
-            
-        }       
+        }
     }
 }

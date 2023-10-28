@@ -2,6 +2,7 @@
 using Projekt_Abschluss.Repositories;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,58 +21,79 @@ namespace Projekt_Abschluss.Views
 
     public partial class EditTaskView : UserControl
     {
-        private TaskModel task;
-        public TaskModel Task
+        private TaskModel? task;
+        public TaskModel? Task
         {
             get { return task; }
             set { task = value;
-                TaskName.Text = task.Name;
-                TaskDescription.Text = task.Description;
-                TaskEstimatedTime.Text = task.EstimatedTime.ToString();
-                TaskRealTime.Text = task.RealTime.ToString();
-                TaskPriority.Text = task.Priority.ToString();
-                TaskDateStart.Text = task.DateStart.ToString();
-                TaskDateEnd.Text = task.DateEnd.ToString();
-                TaskStatus.Text = task.Status.ToString();
-                TaskWorker.SelectedItem = task.UserName;
+                TaskName.Text = task?.Name;
+                TaskDescription.Text = task?.Description;
+                TaskEstimatedTime.Text = task?.EstimatedTime.ToString();
+                TaskRealTime.Text = task?.RealTime.ToString();
+                TaskPriority.Text = task?.Priority.ToString();
+                TaskDateStart.Text = task?.DateStart.ToString();
+                TaskDateEnd.Text = task?.DateEnd.ToString();
+                TaskStatus.Text = task?.Status.ToString();
+                TaskWorker.SelectedItem = task?.UserName;
+
+                if (task == null)
+                {
+                    UpdateButton.IsEnabled = false;
+                }
+                else
+                {
+                    UpdateButton.IsEnabled = true;
+                }
             }
         }
 
-        public List<string> Users { get; set; }
+        public List<string>? Users { get; set; }
 
         public EditTaskView()
         {
             InitializeComponent();
-            var repository = new UserRepository();            
-            Users = repository.GetAllNames();
-            TaskWorker.ItemsSource = Users;
+            
+            if (!DesignerProperties.GetIsInDesignMode(this))
+            {
+                var repository = new UserRepository();
+                Users = repository.GetAllNames();
+                TaskWorker.ItemsSource = Users;
+            }
         }
 
         private async void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
             TaskRepository repository = new TaskRepository();           
 
-            Task.Name = TaskName.Text;
-            Task.Description = TaskDescription.Text;
-            Task.EstimatedTime = TaskEstimatedTime.Value;
-            Task.RealTime = TaskRealTime.Value;
-            Task.Priority = TaskPriority.Value ?? 0;
-            Task.DateStart = TaskDateStart.SelectedDate;
-            Task.DateEnd = TaskDateEnd.SelectedDate;
-            Task.Status = TaskStatus.Value ?? 0;
-            Task.UserName = TaskWorker.Text;            
-
-            var updateSuccess = await repository.UpdateTaskAsync(Task);
-
-            if (updateSuccess)
+            if (Task != null)
             {
-                MessageBox.Show("Task Updated");    
-            }
-            else
-            {
-                MessageBox.Show("Error Updating Task");
+                Task.Name = TaskName.Text;
+                Task.Description = TaskDescription.Text;
+                Task.EstimatedTime = TaskEstimatedTime.Value;
+                Task.RealTime = TaskRealTime.Value;
+                Task.Priority = TaskPriority.Value ?? 0;
+                Task.DateStart = TaskDateStart.SelectedDate;
+                Task.DateEnd = TaskDateEnd.SelectedDate;
+                Task.Status = TaskStatus.Value ?? 0;
+                Task.UserName = (string?)TaskWorker.SelectedItem;
+
+                var updateSuccess = await repository.UpdateTaskAsync(Task);
+
+                if (updateSuccess)
+                {
+                    MessageBox.Show("Task Updated");
+                }
+                else
+                {
+                    MessageBox.Show("Error Updating Task");
+                }
             }
             
+            
+        }
+        public void CleanView()
+        {
+            Task = null;            
         }
     }
 }

@@ -77,8 +77,6 @@ namespace Projekt_Abschluss.Views
                     await taskRepository.UpdateStatusAsync(selectedTask.TaskID, destination);
                     selectedTask.Status = destination;
                 }
-                               
-
             }
         }
 
@@ -98,14 +96,7 @@ namespace Projekt_Abschluss.Views
                         StatusListView[i].SelectedItem = null;
                     }
                 }
-
             }
-
-            
-
         }
     }
-
-
-
 }

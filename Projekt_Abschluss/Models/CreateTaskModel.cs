@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Projekt_Abschluss.Models
 {
-    public class TaskModel
-    {
-        public int TaskID { get; set; }
+    public class CreateTaskModel
+    {        
         public string Name { get; set; }
         public string Description { get; set; }
         public string? UserName { get; set; }
@@ -17,13 +16,8 @@ namespace Projekt_Abschluss.Models
         public int Priority { get; set; }
         public DateTime? DateStart { get; set; }
         public DateTime? DateEnd { get; set; }
-        public int Status { get; set; }       
-        
-
-        public override string ToString()
-        {
-            return Name;
-        }
+        public int Status { get; set; }
+        public int ProjectID { get; set; }
+               
     }
-    
 }

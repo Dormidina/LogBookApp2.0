@@ -52,5 +52,22 @@ namespace Projekt_Abschluss.Repositories
                 throw;
             }
         }
+        public List<ShowProjectsModel> GetAllProjects()
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(_stringConnection);
+                connection.Open();
+
+                var query = @"SELECT Project_ID as ProjectID, Name FROM Projects";
+                var projects = connection.Query<ShowProjectsModel>(query);
+                return projects.ToList();
+            }
+            catch
+
+            {
+                throw;
+            }
+        }
     }
 }

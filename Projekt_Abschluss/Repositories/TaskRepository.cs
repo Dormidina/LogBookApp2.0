@@ -85,5 +85,25 @@ namespace Projekt_Abschluss.Repositories
                 return false;
             }
         }
+
+        public async Task<bool> CreateTaskAsync(CreateTaskModel task)
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(_stringConnection);
+                connection.Open();
+
+                var query = @"INSERT INTO Tasks ([Name], [Description], [Estimated_Time], [Real_Time], [Priority], [Date_Start], [Date_End], [Project_ID], [Status], [UserName])
+                            VALUES (@Name, @Description, @EstimatedTime, @RealTime,  @Priority, @DateStart, @DateEnd, @ProjectID, @Status, @UserName)";
+
+                var affectedRows = await connection.ExecuteAsync(query, new { task.Name, task.Description, task.EstimatedTime, task.RealTime, task.Priority, task.DateStart, task.DateEnd, task.Status, task.UserName, task.ProjectID });
+                return affectedRows > 0;
+
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }
