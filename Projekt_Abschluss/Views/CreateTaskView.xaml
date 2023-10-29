@@ -133,8 +133,8 @@
             </Grid>
         </StackPanel>
 
-        <Button x:Name="CreateButton" Content="Create New Task" Grid.Column="0"  Grid.Row="2" Width="200" Height="50" Click="CreateButton_Click"/>
-        <Button x:Name="CancelButton" Content="Cancel" Grid.Column="1"  Grid.Row="2" Width="200" Height="50" Click="CancelButton_Click"/>
+        <Button x:Name="CreateButton" Content="Create New Task" Grid.Column="0"  Grid.Row="2" Width="200" Height="50" Click="CreateButton_Click" HorizontalAlignment="Center"/>
+        <Button x:Name="CancelButton" Content="Cancel" Grid.Column="1"  Grid.Row="2" Width="200" Height="50" Click="CancelButton_Click" HorizontalAlignment="Center"/>
 
     </Grid>
 

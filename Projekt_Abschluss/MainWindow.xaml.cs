@@ -12,7 +12,9 @@ namespace Projekt_Abschluss
         public MainWindow()
         {
             InitializeComponent();
-            MainGrid.Children.Add(new LoggingView(this));                      
+            MainGrid.Children.Add(new LoggingView(this));  
+            
+
         }
 
         public void LoggingSuccess()
