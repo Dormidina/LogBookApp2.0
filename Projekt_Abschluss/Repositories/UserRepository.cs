@@ -60,9 +60,11 @@ namespace Projekt_Abschluss.Repositories
                 SqlConnection connection = new SqlConnection(_stringConnection);
                 connection.Open();
 
-                var query = @"INSERT INTO Users (Name, Password) VALUES(@Name, @Password)";
-                var affectedRows = await connection.ExecuteAsync(query, new { user.Name, user.Password });
+                var query = @"INSERT INTO Users (Name, Password, IsAdmin) VALUES(@Name, @Password, @IsAdmin)";
+                var affectedRows = await connection.ExecuteAsync(query, new { user.Name, user.Password, user.IsAdmin });
                 return affectedRows > 0;
+
+
             }
             catch 
             {

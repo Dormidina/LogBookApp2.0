@@ -20,8 +20,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
-            <Button x:Name="CreateProjectButton" Click="CreateProjectButton_Click" Content="Create Proyect" Margin="5" Padding="5"/>            
-            <Button x:Name="CreateUserButton" Content="Create User" Margin="5" Padding="5" Click="Button_Click"/>
+            <Button x:Name="CreateProjectButton" Click="CreateProjectButton_Click" Content="Create Proyect" Margin="5" Padding="5"/>             
             <Button x:Name="CreateTaskButton" Content="Create New Task" Margin="5" Padding="5" Click="CreateTaskButton_Click"/>
         </StackPanel>
         <Label Content="Projects" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="20"/>

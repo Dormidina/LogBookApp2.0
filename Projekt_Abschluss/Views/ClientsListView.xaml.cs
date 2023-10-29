@@ -23,6 +23,7 @@ namespace Projekt_Abschluss.Views
         {
             InitializeComponent();
             GetAllClients();
+            GetAllCompanies();
         }
 
         private async void GetAllClients()
@@ -46,6 +47,23 @@ namespace Projekt_Abschluss.Views
 
         }
 
-        
+        private async void GetAllCompanies()
+        {
+            CompanyRepository companyRepository = new CompanyRepository();
+            var companies = await companyRepository.GetAllDataCompaniesAsync();
+            DatagridCompanies.ItemsSource = companies;
+        }
+
+        private void CreateCompanyButton_Click(object sender, RoutedEventArgs e)
+        {
+            Window window = new Window
+            {
+                Title = "Create new Company",
+                Content = new CreateCompanyView()
+            };
+
+            window.ShowDialog();
+            GetAllCompanies();
+        }
     }
 }

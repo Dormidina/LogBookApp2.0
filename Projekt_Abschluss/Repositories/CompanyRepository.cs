@@ -35,5 +35,40 @@ namespace Projekt_Abschluss.Repositories
                 throw;
             }
         }
+
+        public async Task<List<CompanyDataModel>> GetAllDataCompaniesAsync()
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(_stringConnection);
+                connection.Open();
+
+                var query = @"SELECT Name, Adresse, Zip_Code, Telephone, Email FROM Companies";
+                var companies = await connection.QueryAsync<CompanyDataModel>(query);
+                return companies.ToList();
+
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public async Task<bool> CreateCompanyAsync(CompanyDataModel companyDataModel)
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(_stringConnection);
+                connection.Open();
+
+                var query = @"INSERT INTO Companies (Name, Adresse, Zip_Code, Telephone, Email) VALUES (@Name, @Adresse, @ZipCode, @Telephone, @Email)";
+                var userCount = await connection.ExecuteScalarAsync<int>(query, new { companyDataModel.Name, companyDataModel.Adresse, companyDataModel.ZipCode, companyDataModel.Telephone, companyDataModel.Email });
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

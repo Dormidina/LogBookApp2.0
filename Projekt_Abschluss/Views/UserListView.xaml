@@ -7,11 +7,14 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        
-        <DataGrid x:Name="UserList_DataGrid" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button x:Name="CreateUserButton" Content="Create User" Margin="5" Padding="5" Click="Button_Click" Grid.Row="0" Width="90" HorizontalAlignment="Left"/>
+        <DataGrid x:Name="UserList_DataGrid" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" Grid.Row="1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="User" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Projects" Binding="{Binding Projects}"/>
                 <DataGridCheckBoxColumn Header="Admin" Binding="{Binding IsAdmin}"/>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>

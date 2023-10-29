@@ -9,7 +9,6 @@ namespace Projekt_Abschluss.Models
     public class UserDataGridModel
     {
         public string Name { get; set; }
-        public List<string> Projects { get; set; }
         public bool IsAdmin { get; set; }
         
     }

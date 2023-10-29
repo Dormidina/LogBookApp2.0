@@ -28,11 +28,7 @@ namespace Projekt_Abschluss.Views
             GetAllProjects();
             TaskColumnsView.EditTaskView = DetailsTaskView;
 
-            if (LogInHelper.Session.IsAdmin == false)
-            {
-                CreateUserButton.Visibility = Visibility.Collapsed;
-
-            }
+            
         }
 
         private void CreateProjectButton_Click(object sender, RoutedEventArgs e)
@@ -47,18 +43,7 @@ namespace Projekt_Abschluss.Views
             GetAllProjects();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Window window = new Window
-            {
-                Title = "Create new User",
-                Content = new CreateUserView()
-
-            };
-            
-            window.ShowDialog();
-
-        }
+        
 
         private async void GetAllProjects()
         {
