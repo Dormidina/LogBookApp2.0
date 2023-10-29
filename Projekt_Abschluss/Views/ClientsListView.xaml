@@ -21,15 +21,15 @@
                 <Button x:Name="CreateClientButton" Content="Create Client" Margin="5" Padding="5" Click="CreateClientButton_Click"/>
                 
             </StackPanel>
-            <Label Content="CLIENTS" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18"/>
-            <DataGrid x:Name="DatagridClients" Grid.Row="1">
+            <Label Content="CLIENTS" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="#2E2E2E" HorizontalContentAlignment="Center"/>
+            <DataGrid x:Name="DatagridClients" Grid.Row="1" IsReadOnly="True" ColumnWidth="*">
 
             </DataGrid>
 
             <Button Content="Create new Company" Grid.Row="2" Margin="5" Padding="5" Width="150" HorizontalAlignment="Left" Click="CreateCompanyButton_Click"/>
-            <Label Content="COMPANIES" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" FontSize="18"/>
+            <Label Content="COMPANIES" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="#2E2E2E" HorizontalContentAlignment="Center"/>
 
-            <DataGrid x:Name="DatagridCompanies" Grid.Row="3">
+            <DataGrid x:Name="DatagridCompanies" Grid.Row="3" IsReadOnly="True" ColumnWidth="*">
 
             </DataGrid>
 

@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:Projekt_Abschluss"
         mc:Ignorable="d"
         Title="LogBook App" Height="450" Width="800"
-        Icon="/Content/logbookicon.png">
+        Icon="/Content/logbookicon.png"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        ui:WindowHelper.UseModernWindowStyle="True">
     
     <Grid x:Name="MainGrid">
         

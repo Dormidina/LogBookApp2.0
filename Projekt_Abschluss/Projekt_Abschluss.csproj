@@ -33,6 +33,8 @@
     <PackageReference Include="Dapper" Version="2.0.151" />
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.5.1" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.1" />
+    <PackageReference Include="ModernWpfUI" Version="0.9.6" />
+    <PackageReference Include="ModernWpfUI.MahApps" Version="0.9.5" />
   </ItemGroup>
 
 </Project>

@@ -23,16 +23,15 @@
             <Button x:Name="CreateProjectButton" Click="CreateProjectButton_Click" Content="Create Proyect" Margin="5" Padding="5"/>             
             <Button x:Name="CreateTaskButton" Content="Create New Task" Margin="5" Padding="5" Click="CreateTaskButton_Click"/>
         </StackPanel>
-        <Label Content="Projects" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="20"/>
+        <Label Content="Projects" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="#2E2E2E" HorizontalContentAlignment="Center"/>
         <DataGrid x:Name="ProjektList_DataGrid" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" SelectionChanged="ProjektList_DataGrid_SelectionChanged" SelectionMode="Single" IsReadOnly="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name"  Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="*"/>
-                <DataGridTextColumn Header="Company Name" Binding="{Binding CompanyName}"/>
+                <DataGridTextColumn Header="Company Name" Binding="{Binding CompanyName}" Width="150"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Separator VerticalAlignment="Top" Height="1" Background="Black" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>      
-        <Label Content="Tasks" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="20"/>
+        <Label Content="Tasks" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Foreground="#2E2E2E" HorizontalContentAlignment="Center"/>
         <local:TaskColumnsView x:Name="TaskColumnsView" Grid.Column="0" Grid.Row="4">
             
         </local:TaskColumnsView>
